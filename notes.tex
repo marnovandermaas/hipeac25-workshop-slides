@@ -1,0 +1,34 @@
+% Set frames to be 16:9
+\documentclass[aspectratio=169]{beamer}
+\setbeameroption{show only notes} % Only notes
+
+% Title
+\title[Sonata]{\vspace{-2em}Sonata: low-cost CHERI hardware for embedded systems}
+\author{\vspace{-2em}Dr Marno van der Maas - lowRISC}
+%\institute{lowRISC}
+\titlegraphic{\includegraphics[width=\textwidth]{img/soocon-logo.png}}
+
+% Date for title page
+\date{\vspace{-1em}6 February, 2024}
+% Date for notes page
+\day=06\relax
+\month=02\relax
+\year=2024\relax
+
+% Theming
+\usepackage{tikz}
+\definecolor{mycolor}{rgb}{0.44,0.68,0.28}
+\setbeamercolor{structure}{fg=mycolor}
+\setbeamertemplate{frametitle}[default][center]
+% Remove naviation symbols
+\beamertemplatenavigationsymbolsempty
+% Change font
+\usefonttheme{professionalfonts}
+% Add space between note paragraphs
+%\addtobeamertemplate{note page}{\setlength{\parskip}{12pt}}
+
+\begin{document}
+
+\input{content.tex}
+
+\end{document}
