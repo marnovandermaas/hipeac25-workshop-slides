@@ -1,0 +1,9 @@
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+handout.pdf
+notes.pdf
+slides.pdf
