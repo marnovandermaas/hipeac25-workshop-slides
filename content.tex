@@ -11,6 +11,8 @@
 \end{frame}
 \note{
   This is the outline of what I'll talk about before we start the hands-on workshop.
+  First I'll give a general introduction and then give you and overview of Sonata and CHERIoT.
+  Finally, I'll go through what we'll do in the workshop.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -32,6 +34,7 @@
 \end{frame}
 \note{
   This morning we were focussed on Morello, how does that exercise compare to the one we will do now?
+  This table shows some of the key differences.
 }
 
 \begin{frame}
@@ -44,7 +47,7 @@
     This was important to prove the technology.
 
     We believe in the step towards commercialization, embedded systems may be a better place to start because vendors usually have more control over the whole software stack and can recompile everything to use pure capability.
-    Sonata can provide the open source platform to make this happen.
+    Sonata provides an open source platform to make this happen.
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -57,7 +60,7 @@
     \includegraphics[width=0.7\textwidth]{img/pcb.png}
 \end{frame}
 \note{
-    Here's a picture of an initial version of the Sonata board!
+    Here's a picture of the Sonata board!
     It is a fully open source platform to get CHERI hardware in the hands of embedded systems engineers.
     Sonata is easy to use, for example USB provides power, allows programming the FPGA and can be used as a serial UART terminal.
 }
@@ -147,10 +150,11 @@
         \item 6-bit permissions
         \item 1-bit reserved
         \item \textbf{Total:} 64-bits
+        \item 1-bit out-of-band validity
     \end{itemize}
 \end{frame}
 \note{
-    32-bit capabilities are a lot more difficult than 128-bit ones because you only have 32-bits of meta-data.
+    64-bit capabilities are a lot more difficult than 128-bit ones because you only have 32-bits of meta-data.
     See the full ISA specification here: \url{https://github.com/CHERIoT-Platform/cheriot-sail/tree/main/archdoc}
 }
 
@@ -165,7 +169,9 @@
 \end{frame}
 \note{
     CHERIoT puts a lot of emphasis on compartmentalization to the extent that even a real-time operating system can be compartmentalized in a light-weight manner.
-    \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
+    For more details, see: \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
+
+    We'll explore compartmentalization more in the exercise later on.
 }
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -197,7 +203,7 @@ $ cd sonata-software
 $ nix develop
 $ xmake -P examples
     ...
-  [100%]: build ok, spent 12.747s
+  [100%]: build ok, spent 6.328s
 \end{verbatim}
 
 \end{frame}
@@ -227,9 +233,9 @@ $ xmake -P exercises
     ...
   [100%]: build ok, spent 12.747s
 $ cp build/cheriot/cheriot/release/hardware_access_part_1.slot1.uf2 \
-  /media/mvdmaas/SONATA
+    /media/mvdmaas/SONATA
 $ cp build/cheriot/cheriot/release/hardware_access_part_2.slot1.uf2 \
-  /media/mvdmaas/SONATA
+    /media/mvdmaas/SONATA
 $ cheriot-audit \
     --board cheriot-rtos/sdk/boards/sonata-prerelease.json \
     --module exercises/hardware_access_control/part_3/gpio_access.rego \
@@ -247,9 +253,18 @@ $ cheriot-audit \
   \frametitle{Important links}
 
   \begin{itemize}
-    \item Getting started guide: \url{lowrisc.github.io/sonata-software/doc/getting-started.html}
-    \item Latest bitstream: \url{github.com/lowRISC/sonata-system/releases/tag/v1.0}
-    \item Exercise: \url{lowrisc.github.io/sonata-software/exercises/hardware_access_control/index.html}
+    \item Getting started guide:
+
+      \url{lowrisc.github.io/sonata-software/doc/getting-started.html}
+    \item[]
+    \item Latest bitstream:
+
+      \url{github.com/lowRISC/sonata-system/releases/tag/v1.0}
+    \item[]
+    \item Exercise:
+
+      \url{lowrisc.github.io/sonata-software/exercises/hardware_access_control/index.html}
+    \item[]
     \item We're here to help!
   \end{itemize}
 \end{frame}
