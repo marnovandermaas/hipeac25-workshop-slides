@@ -11,35 +11,31 @@
 }
 
 \begin{frame}
+  \frametitle{Morello vs CHERIoT}
+  \centering
+  \begin{center}
+  \begin{tabular}{c c c}
+    Address size & 64-bits & 32-bits \\
+    Virtual memory & Yes & No \\
+    Operating system & CheriBSD & CHERIoT RTOS \\
+    RAM size & > 1 GiBs & < 1 MiB \\
+  \end{tabular}
+  \end{center}
+\end{frame}
+\note{
+  This morning we were focussed on Morello, how does that exercise compare to the one we will do now?
+}
+
+\begin{frame}
     \frametitle{Sonata board}
     \centering
     \includegraphics[width=0.7\textwidth]{img/pcb.png}
 \end{frame}
 \note{
-    Here's a render of an initial version of the Sonata board!
-    The goal here is to make a fully open source platform to get CHERI hardware in the hands of embedded systems engineers.
-    Creating this platform in the open source takes CHERI to the next level on the path to commercialization.
-
+    Here's a picture of an initial version of the Sonata board!
+    It is a fully open source platform to get CHERI hardware in the hands of embedded systems engineers.
     Sonata is easy to use, for example USB provides power, allows programming the FPGA and can be used as a serial UART terminal.
 }
-
-%%%%%%%%%%%%%%%%%%%%
-\section{Background}
-%%%%%%%%%%%%%%%%%%%%
-
-%\begin{frame}
-%    \frametitle{Compartentalization}
-%
-%    \begin{itemize}
-%        \item Memory allocator
-%        \item Scheduler
-%        \item Revoker
-%    \end{itemize}
-%\end{frame}
-%\note{
-%    CHERIoT puts a lot of emphasis on compartmentatlization to the extent that even a real-time operating system can be compartmentalized in a light-weiht manner.
-%    \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
-%}
 
 \begin{frame}
     \frametitle{Why embedded?}
@@ -52,6 +48,24 @@
 
     We believe in the step towards commercialization, embedded systems may be a better place to start because vendors usually have more control over the whole software stack and can recompile everything to use pure capability.
     Sonata can provide the open source platform to make this happen.
+}
+
+%%%%%%%%%%%%%%%%%%%%
+\section{Background}
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{Compartentalization}
+
+    \begin{itemize}
+        \item Memory allocator
+        \item Scheduler
+        \item Revoker
+    \end{itemize}
+\end{frame}
+\note{
+    CHERIoT puts a lot of emphasis on compartmentatlization to the extent that even a real-time operating system can be compartmentalized in a light-weiht manner.
+    \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
 }
 
 
