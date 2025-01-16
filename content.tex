@@ -28,17 +28,6 @@
 }
 
 \begin{frame}
-    \frametitle{Sonata board}
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/pcb.png}
-\end{frame}
-\note{
-    Here's a picture of an initial version of the Sonata board!
-    It is a fully open source platform to get CHERI hardware in the hands of embedded systems engineers.
-    Sonata is easy to use, for example USB provides power, allows programming the FPGA and can be used as a serial UART terminal.
-}
-
-\begin{frame}
     \frametitle{Why embedded?}
     \centering
     \includegraphics[height=0.7\textheight]{img/embedded.png}
@@ -51,29 +40,22 @@
     Sonata can provide the open source platform to make this happen.
 }
 
-%%%%%%%%%%%%%%%%%%%%
-\section{Background}
-%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\section{Sonata overview}
+%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-    \frametitle{Compartentalization}
-
-    \begin{itemize}
-        \item Memory allocator
-        \item Scheduler
-        \item Revoker
-    \end{itemize}
+    \frametitle{Sonata board}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/pcb.png}
 \end{frame}
 \note{
-    CHERIoT puts a lot of emphasis on compartmentatlization to the extent that even a real-time operating system can be compartmentalized in a light-weiht manner.
-    \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
+    Here's a picture of an initial version of the Sonata board!
+    It is a fully open source platform to get CHERI hardware in the hands of embedded systems engineers.
+    Sonata is easy to use, for example USB provides power, allows programming the FPGA and can be used as a serial UART terminal.
 }
 
-%%%%%%%%%%%%%%%%%%%%%
-\section{Design overview}
-%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Sonata block diagram}
     \centering
     \includegraphics[width=0.9\textwidth]{img/block-diagram.pdf}
 \end{frame}
@@ -126,79 +108,60 @@
     There are two PMOD connectors on the bottom as well as RS-232 and RS-485 connectors.
 }
 
+\begin{frame}
+  \frametitle{V1.0 release}
+  \begin{itemize}
+    \item Pinmux and padring
+    \item Pmod 0, 1 and C
+    \item RS-485
+    \item LCD backlight dimmable
+    \item System info IP
+    \item GPIO outpu enable
+    \item Software slots
+    \item Live bitstream switching
+    \item Timing and performance improvements
+  \end{itemize}
+\end{frame}
+\note{
+  For more details see: \url{https://github.com/lowRISC/sonata-system/releases/tag/v1.0}
+}
+
+%%%%%%%%%%%%%%%%%%%%
+\section{CHERIoT overview}
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{Capability format}
+
+    \begin{itemize}
+        \item 32-bit address
+        \item 22-bit compressed base and top
+        \item 3-bit object type for sealing
+        \item 6-bit permissions
+        \item 1-bit reserved
+        \item \textbf{Total:} 64-bits
+    \end{itemize}
+\end{frame}
+\note{
+    32-bit capabilities are a lot more difficult than 128-bit ones because you only have 32-bits of meta-data.
+    See the full ISA specification here: \url{https://github.com/CHERIoT-Platform/cheriot-sail/tree/main/archdoc}
+}
+
+\begin{frame}
+    \frametitle{Compartentalization}
+
+    \begin{itemize}
+        \item Memory allocator
+        \item Scheduler
+        \item Revoker
+    \end{itemize}
+\end{frame}
+\note{
+    CHERIoT puts a lot of emphasis on compartmentatlization to the extent that even a real-time operating system can be compartmentalized in a light-weiht manner.
+    \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
+}
+
 %%%%%%%%%%%%%%%%%%%%%
-\section{Open source}
+\section{Workshop}
 %%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-    \frametitle{Open source at the heart}
-    \centering
-    \begin{columns} \begin{column}{0.2\textwidth}
-        \centering
-        \includegraphics[height=0.2\textheight]{img/llvm.png}
-        \\ \vspace{2em}
-        \includegraphics[height=0.2\textheight]{img/freebsd.png}
-    \end{column} \begin{column}{0.2\textwidth}
-        \centering
-        \includegraphics[height=0.2\textheight]{img/riscv.pdf}
-        \\ \vspace{4em}
-        \includegraphics[width=\textwidth]{img/cheri.pdf}
-    \end{column} \begin{column}{0.4\textwidth}
-        \includegraphics[width=\textwidth]{img/ibex.pdf}
-    \end{column} \end{columns}
-\end{frame}
-\note{
-    The CHERI research benefited from open source projects such as FreeBSD and LLVM.
-    CHERIoT Ibex exists because of open architecture (RISC-V, CHERI ISAv9 and CHERIoT ISA) and open silicon (Ibex core).
-
-    The fully open nature of Sonata (RTL, DV, Board layout, software etc) will in turn provide many opportunities for others to continue building on this work.
-    Open source can work well to drive innovation and Sonata is playing its part in the CHERI story here.
-
-    \begin{itemize}
-        \item \url{https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-987.pdf}
-        \item \url{https://www.microsoft.com/en-us/research/publication/cheriot-rethinking-security-for-low-cost-embedded-systems/}
-        \item \url{https://github.com/microsoft/cheriot-ibex}
-    \end{itemize}
-}
-
-\begin{frame}
-    \frametitle{Pull it all together}
-    \centering
-    \includegraphics[width=0.9\textwidth]{img/platform.pdf}
-\end{frame}
-\note{
-    The idea for Sonata is to be the open source platform that can bring all these efforts together.
-    This means taking the work done on open standard instruction set architectures, CPU implementations, compilers, operating systems and software to put them together in an open source platform for embedded systems.
-}
-
-\begin{frame}
-    \frametitle{Open Sonata}
-    \begin{itemize}
-        \item Digital design (RTL)
-        \item Design verification
-        \item Documentation
-        \item Software
-        \item Board layout
-    \end{itemize}
-\end{frame}
-\note{
-    lowRISC's motto is "open to the core".
-    Therefore everything is open source from the documentation to the RTL design and to the PCB design.
-    The PCB is being manufactured by NewAE technologies, which is a company part of the lowRISC family.
-    Here are some links:
-    \begin{itemize}
-        \item \url{https://github.com/lowRISC/sonata-system}
-        \item \url{https://github.com/newaetech/sonata-pcb}
-        \item \url{https://lowrisc.org/sonata-system/}
-    \end{itemize}
-}
-
-\begin{frame}
-    \frametitle{Schematic}
-    \centering
-    \includegraphics[height=0.8\textheight]{img/schematic.png}
-\end{frame}
-\note{
-    As an example here is part of the PCB schematic published on:
-    \url{https://github.com/newaetech/sonata-pcb}
-}
 
