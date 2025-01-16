@@ -123,7 +123,7 @@
     \item RS-485
     \item LCD backlight dimmable
     \item System info IP
-    \item GPIO outpu enable
+    \item GPIO output enable
     \item Software slots
     \item Live bitstream switching
     \item Timing and performance improvements
@@ -155,7 +155,7 @@
 }
 
 \begin{frame}
-    \frametitle{Compartentalization}
+    \frametitle{Compartmentalization}
 
     \begin{itemize}
         \item Memory allocator
@@ -164,7 +164,7 @@
     \end{itemize}
 \end{frame}
 \note{
-    CHERIoT puts a lot of emphasis on compartmentatlization to the extent that even a real-time operating system can be compartmentalized in a light-weiht manner.
+    CHERIoT puts a lot of emphasis on compartmentalization to the extent that even a real-time operating system can be compartmentalized in a light-weight manner.
     \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
 }
 
@@ -213,9 +213,10 @@ $ xmake -P examples
     \item Two compartments want access to user LEDs
     \item Part 1: compile and run example
     \item Part 2: compartmentalize LEDs and add access control
-    \teim Part 3: audit the compartmentalization
+    \item Part 3: audit the compartmentalization
+  \end{itemize}
 \end{frame}
-\note{Overview of harware access control exercise}
+\note{Overview of hardware access control exercise}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Exercise overview}
@@ -225,18 +226,21 @@ $ nix develop
 $ xmake -P exercises
     ...
   [100%]: build ok, spent 12.747s
-$ cp build/cheriot/cheriot/release/hardware_access_part_1.slot1.uf2 /media/mvdmaas/SONATA
-$ cp build/cheriot/cheriot/release/hardware_access_part_2.slot1.uf2 /media/mvdmaas/SONATA
+$ cp build/cheriot/cheriot/release/hardware_access_part_1.slot1.uf2 \
+  /media/mvdmaas/SONATA
+$ cp build/cheriot/cheriot/release/hardware_access_part_2.slot1.uf2 \
+  /media/mvdmaas/SONATA
 $ cheriot-audit \
     --board cheriot-rtos/sdk/boards/sonata-prerelease.json \
     --module exercises/hardware_access_control/part_3/gpio_access.rego \
     --query "data.gpio_access.only_gpio_access_has_access" \
-    --firmware-report "build/cheriot/cheriot/release/hardware_access_part_2.json"
+    --firmware-report \
+    "build/cheriot/cheriot/release/hardware_access_part_2.json"
 \end{verbatim}
 
 \end{frame}
 \note{
-  Here are some of the key commands we'll use in the exercise. First, enter the Nix environment and build the exercises. You can copy whichever firmware you like to your SONATA board, which you will do in parts 1 and 2. Part 3 uses cheriot-audit to verify that we have comparmentalized correctly.
+  Here are some of the key commands we'll use in the exercise. First, enter the Nix environment and build the exercises. You can copy whichever firmware you like to your SONATA board, which you will do in parts 1 and 2. Part 3 uses cheriot-audit to verify that we have compartmentalized correctly.
 }
 
 \begin{frame}
