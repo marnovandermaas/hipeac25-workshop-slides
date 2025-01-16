@@ -179,17 +179,18 @@
   Overview of our getting started guide.
 }
 
-\begin{frame}
+\begin{frame}[fragile=singleslide]
   \frametitle{Nix environment}
 
 \begin{verbatim}
 $ git clone --recursive https://github.com/lowRISC/sonata-software
-Cloning into 'sonata-software'...
+  Cloning into `sonata-software'...
+    ...
 $ cd sonata-software
 $ nix develop
 $ xmake -P exercises
-...
-[100%]: build ok, spent 12.747s
+    ...
+  [100%]: build ok, spent 12.747s
 \end{verbatim}
 
 \end{frame}
