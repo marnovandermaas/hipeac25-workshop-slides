@@ -165,3 +165,50 @@
 \section{Workshop}
 %%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}
+  \frametitle{Getting started}
+
+  \begin{itemize}
+    \item Install Nix
+    \item Enter development shell
+    \item Build software
+    \item Run on FPGA
+  \end{itemize}
+\end{frame}
+\note{
+  Overview of our getting started guide.
+}
+
+\begin{frame}
+  \frametitle{Nix environment}
+
+\begin{verbatim}
+$ git clone --recursive https://github.com/lowRISC/sonata-software
+Cloning into 'sonata-software'...
+$ cd sonata-software
+$ nix develop
+$ xmake -P exercises
+...
+[100%]: build ok, spent 12.747s
+\end{verbatim}
+
+\end{frame}
+\note{
+  To give you a flavor of what the workflow is like after following the getting started guide, these commands should be sufficient.
+  The Nix environment takes care of all the nitty gritty details on setting up your development environment.
+}
+
+\begin{frame}
+  \frametitle{Important links}
+
+  \begin{itemize}
+    \item Getting started guide: \url{lowrisc.github.io/sonata-software/doc/getting-started.html}
+    \item Latest bitstream: \url{github.com/lowRISC/sonata-system/releases/tag/v1.0}
+    \item Exercise: \url{lowrisc.github.io/sonata-software/exercises/hardware_access_control/index.html}
+    \item We're here to help!
+  \end{itemize}
+\end{frame}
+\note{
+  This slide is meant to stay up while we do the workshop.
+}
+
