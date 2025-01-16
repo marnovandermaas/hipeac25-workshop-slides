@@ -18,7 +18,7 @@
     Address size & 64-bits & 32-bits \\
     Virtual memory & Yes & No \\
     Operating system & CheriBSD & CHERIoT RTOS \\
-    RAM size & > 1 GiBs & < 1 MiB \\
+    RAM size & $>1$ GiB & $<1$ MiB \\
   \end{tabular}
   \end{center}
 \end{frame}
@@ -67,7 +67,6 @@
     CHERIoT puts a lot of emphasis on compartmentatlization to the extent that even a real-time operating system can be compartmentalized in a light-weiht manner.
     \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%
 \section{Design overview}
@@ -125,24 +124,6 @@
     QWIIC uses I2C to daisy chain boards together (two connectors on the side).
     There are two PMOD connectors on the bottom as well as RS-232 and RS-485 connectors.
 }
-
-%\begin{frame}
-%    \frametitle{Memory and tags}
-%
-%    Create picture of memory and what is tagged.
-%\end{frame}
-%\note{
-%    There are two sets of tags for CHERIoT: capability tags and revocation tags.
-%    Capability tags are controlled by the hardware and determine whether a piece of memory is a capability or not.
-%    These are not memory mapped.
-%    Revocation tags are used by the memory allocator to free previously allocated memory while the hardware scans for left over capabilities.
-%    These tags are memory mapped and accessible by the allocator.
-%
-%    Sonata's memory map has a mixed of tagged regions:
-%    Some memory is neither capability nor revocation tagged like IO.
-%    Some memory just has capability tags, like some of HyperRAM.
-%    Some memory has both capability and revocation tags, like all of SRAM and some of HyperRAM.
-%}
 
 %%%%%%%%%%%%%%%%%%%%%
 \section{Open source}
