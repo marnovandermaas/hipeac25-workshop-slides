@@ -188,7 +188,7 @@ $ git clone --recursive https://github.com/lowRISC/sonata-software
     ...
 $ cd sonata-software
 $ nix develop
-$ xmake -P exercises
+$ xmake -P examples
     ...
   [100%]: build ok, spent 12.747s
 \end{verbatim}
@@ -197,6 +197,39 @@ $ xmake -P exercises
 \note{
   To give you a flavor of what the workflow is like after following the getting started guide, these commands should be sufficient.
   The Nix environment takes care of all the nitty gritty details on setting up your development environment.
+}
+
+\begin{frame}
+  \frametitle{Hardware access control}
+
+  \begin{itemize}
+    \item Two compartments want access to user LEDs
+    \item Part 1: compile and run example
+    \item Part 2: compartmentalize LEDs and add access control
+    \teim Part 3: audit the compartmentalization
+\end{frame}
+\note{Overview of harware access control exercise}
+
+\begin{frame}[fragile=singleslide]
+  \frametitle{Exercise overview}
+
+\begin{verbatim}
+$ nix develop
+$ xmake -P exercises
+    ...
+  [100%]: build ok, spent 12.747s
+$ cp build/cheriot/cheriot/release/hardware_access_part_1.slot1.uf2 /media/mvdmaas/SONATA
+$ cp build/cheriot/cheriot/release/hardware_access_part_2.slot1.uf2 /media/mvdmaas/SONATA
+$ cheriot-audit \
+    --board cheriot-rtos/sdk/boards/sonata-prerelease.json \
+    --module exercises/hardware_access_control/part_3/gpio_access.rego \
+    --query "data.gpio_access.only_gpio_access_has_access" \
+    --firmware-report "build/cheriot/cheriot/release/hardware_access_part_2.json"
+\end{verbatim}
+
+\end{frame}
+\note{
+  Here are some of the key commands we'll use in the exercise. First, enter the Nix environment and build the exercises. You can copy whichever firmware you like to your SONATA board, which you will do in parts 1 and 2. Part 3 uses cheriot-audit to verify that we have comparmentalized correctly.
 }
 
 \begin{frame}
