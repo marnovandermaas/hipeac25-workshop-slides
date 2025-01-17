@@ -75,28 +75,7 @@
 
     There is also a big focus on configurability.
     For example the pinmux can be used to drive an LED by a PWM instead of a GPIO.
-    And the number of I2C, SPI and UART devices is configurable.
-}
-
-\begin{frame}
-    \frametitle{Connectable}
-    \begin{itemize}
-        \item I2C
-        \item SPI
-        \item UART
-        \item GPIO
-    \end{itemize}
-\end{frame}
-\note{
-    We support many standard interfaces to connect embedded systems.
-    It is important for Sonata, as a development board, to be connectable to as many systems as possible.
-
-    \begin{itemize}
-        \item I2C: inter-integrated circuit
-        \item SPI: serial peripheral interface
-        \item UART: universal asynchronous receiver and transmitter
-        \item GPIO: general purpose input and output
-    \end{itemize}
+    Map I2C, SPI and UART onto different headers.
 }
 
 \begin{frame}
@@ -106,8 +85,9 @@
         \item Arduino Shield
         \item mikroBus Click
         \item SparkFun QWIIC
-        \item PMOD
+        \item PMOD 0, 1 and C
         \item RS-232 RS-485
+        \item USB device
     \end{itemize}
 \end{frame}
 \note{
@@ -121,15 +101,14 @@
 \begin{frame}
   \frametitle{V1.0 release}
   \begin{itemize}
-    \item Pinmux and padring
-    \item Pmod 0, 1 and C
-    \item RS-485
-    \item LCD backlight dimmable
-    \item System info IP
-    \item GPIO output enable
-    \item Software slots
-    \item Live bitstream switching
-    \item Timing and performance improvements
+    \item Pinmux for mapping IP blocks onto pins
+    \item GPIO and PWM
+    \item Bootloader with support for software slots
+    \item Bitstream switching
+    \item Simulator, FPGA and CI
+    \item 40 MHz clock, 128 KiB SRAM, 1 MiB HyperRAM
+    \item Capability memory architecture including hardware revocation
+    \item Nix development environment
   \end{itemize}
 \end{frame}
 \note{
@@ -169,7 +148,7 @@
 \end{frame}
 \note{
     CHERIoT puts a lot of emphasis on compartmentalization to the extent that even a real-time operating system can be compartmentalized in a light-weight manner.
-    For more details, see: \url{https://github.com/search?q=repo\%3ACHERIoT-Platform\%2Fcheriot-rtos+\_\_cheri\_compartment&type=code}
+    For more details, see: \url{https://github.com/search?q=repo\%3ACHERIoT-Platform\%2Fcheriot-rtos+\_\_cheri_compartment&type=code}
 
     We'll explore compartmentalization more in the exercise later on.
 }
