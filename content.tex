@@ -169,7 +169,7 @@
 \end{frame}
 \note{
     CHERIoT puts a lot of emphasis on compartmentalization to the extent that even a real-time operating system can be compartmentalized in a light-weight manner.
-    For more details, see: \url{https://github.com/search?q=repo\%3Amicrosoft\%2Fcheriot-rtos\%20\_\_cheri\_compartment&type=code}
+    For more details, see: \url{https://github.com/search?q=repo\%3ACHERIoT-Platform\%2Fcheriot-rtos+\_\_cheri\_compartment&type=code}
 
     We'll explore compartmentalization more in the exercise later on.
 }
@@ -233,9 +233,9 @@ $ xmake -P exercises
     ...
   [100%]: build ok, spent 12.747s
 $ cp build/cheriot/cheriot/release/hardware_access_part_1.slot1.uf2 \
-    /media/mvdmaas/SONATA
+    /media/$USER/SONATA
 $ cp build/cheriot/cheriot/release/hardware_access_part_2.slot1.uf2 \
-    /media/mvdmaas/SONATA
+    /media/$USER/SONATA
 $ cheriot-audit \
     --board cheriot-rtos/sdk/boards/sonata-prerelease.json \
     --module exercises/hardware_access_control/part_3/gpio_access.rego \
