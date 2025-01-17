@@ -126,7 +126,7 @@
         \item 32-bit address
         \item 22-bit compressed base and top
         \item 3-bit object type for sealing
-        \item 6-bit permissions
+        \item 6-bit compressed permissions
         \item 1-bit reserved
         \item \textbf{Total:} 64-bits
         \item 1-bit out-of-band validity
@@ -135,19 +135,30 @@
 \note{
     64-bit capabilities are a lot more difficult than 128-bit ones because you only have 32-bits of meta-data.
     See the full ISA specification here: \url{https://github.com/CHERIoT-Platform/cheriot-sail/tree/main/archdoc}
+
+    The way CHERIoT solves this is by compression of permissions and using object type indirection for sealing.
 }
 
 \begin{frame}
     \frametitle{Compartmentalization}
-
+  \begin{itemize}
+    \item CHERIoT compartments
+      \begin{itemize}
+        \item Program counter capability
+        \item Global capability pointer
+        \item Export table
+        \item Import table
+      \end{itemize}
+    \item RTOS compartments
     \begin{itemize}
         \item Memory allocator
         \item Scheduler
         \item Revoker
     \end{itemize}
+  \end{itemize}
 \end{frame}
 \note{
-    CHERIoT puts a lot of emphasis on compartmentalization to the extent that even a real-time operating system can be compartmentalized in a light-weight manner.
+    CHERIoT puts an emphasis on compartmentalization to the extent that even a real-time operating system can be compartmentalized in a light-weight manner.
     For more details, see: \url{https://github.com/search?q=repo\%3ACHERIoT-Platform\%2Fcheriot-rtos+\_\_cheri_compartment&type=code}
 
     We'll explore compartmentalization more in the exercise later on.
