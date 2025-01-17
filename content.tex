@@ -101,6 +101,8 @@
 \begin{frame}
   \frametitle{V1.0 release}
   \begin{itemize}
+    \item PCB and board design
+    \item Drag and drop programming using RP2040
     \item Pinmux for mapping IP blocks onto pins
     \item GPIO and PWM
     \item Bootloader with support for software slots
@@ -113,6 +115,8 @@
 \end{frame}
 \note{
   For more details see: \url{https://github.com/lowRISC/sonata-system/releases/tag/v1.0}
+
+  To buy Sonata se: \url{https://tinyurl.com/sonata-int}
 }
 
 %%%%%%%%%%%%%%%%%%%%
@@ -160,6 +164,11 @@
 \note{
     CHERIoT puts an emphasis on compartmentalization to the extent that even a real-time operating system can be compartmentalized in a light-weight manner.
     For more details, see: \url{https://github.com/search?q=repo\%3ACHERIoT-Platform\%2Fcheriot-rtos+\_\_cheri_compartment&type=code}
+
+    PCC for code and read-only globals.
+    GCP for mutable globals
+    Import table for MMIO regions, sentries for libraries and sealed caps for exported functions of other compartments.
+    Expoet table for list of entry points that other compartments can call.
 
     We'll explore compartmentalization more in the exercise later on.
 }
